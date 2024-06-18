@@ -1,0 +1,9 @@
+import { appCore } from './module/core.ts'
+<% props.middlewares.forEach(function(middleware) { %>
+import <%= middleware %> from './middlewares/<%= middleware %>';
+<% }); %>
+
+new appCore({ port: 3000,
+ cors: { origin: "*" }  , middlewares: [<%= props.middlewares.join(', ') %>]
+
+ }).init()
